@@ -11,6 +11,8 @@ import { Navbar2Component } from './components/navbar2/navbar2.component';
 import { Footer2Component } from './components/footer2/footer2.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import {HttpClientModule} from "@angular/common/http";
+import { MetodoPComponent } from './components/metodo-p/metodo-p.component';
+import { TarjetaVisaComponent } from './components/tarjeta-visa/tarjeta-visa.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     Navbar2Component,
     Footer2Component,
     PaymentComponent,
+    MetodoPComponent,
+    TarjetaVisaComponent,
   ],
   imports: [
     BrowserModule,
