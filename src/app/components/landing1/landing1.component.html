@@ -29,15 +29,15 @@
                     <div class="col text-center">
                         <img src="assets/part2.svg " alt="Reclutador">
                     </div>
-                    <div class="col mt-4">
-                        <h1 class="mb-3" >Hacemos tu proceso de<span> reclutamiento </span>más fácil</h1>
-                        <p > En TalentSoft, entendemos que encontrar al candidato perfecto puede ser
+                    <div class="col mt-4" id="text2">
+                        <h1 class="mb-3" id="part2">Hacemos tu proceso de<span> reclutamiento </span>más fácil</h1>
+                        <p id="part2"> En TalentSoft, entendemos que encontrar al candidato perfecto puede ser
                             desafiante. Es por eso que ofrecemos herramientas avanzadas y una interfaz intuitiva para
                             simplificar cada etapa del proceso de reclutamiento. Desde la publicación de vacantes hasta
                             la selección y contratación de talento, nuestra plataforma centralizada te proporciona las
                             herramientas necesarias para encontrar a los mejores candidatos de manera eficiente y
                             efectiva.</p>
-                        <p >¿Por qué escogernos? <i class="bi bi-arrow-right"></i></p>
+                        <p id="part2b">¿Por qué escogernos? <i class="bi bi-arrow-right"></i></p>
                     </div>
                 </div>
             </div>
@@ -249,13 +249,13 @@
             <div class="container">
                 <div class="row py px-5">
                     <div class="col text-center d-flex flex-column justify-content-center align-items-center">
-                        <h1 class="mb-3" >Preguntas Frecuentes</h1>
-                        <p > Encuentra respuestas a tus preguntas más comunes sobre TalentSoft. Desde
+                        <h1 class="mb-3" id="part2">Preguntas Frecuentes</h1>
+                        <p id="part2"> Encuentra respuestas a tus preguntas más comunes sobre TalentSoft. Desde
                             seguridad laboral hasta gestión de nóminas, estamos aquí para ayudarte a optimizar tus
                             procesos empresariales.</p>
-                        <p >¿Por qué escogernos? <i class="bi bi-arrow-right"></i></p>
+                        <p id="part2b">¿Por qué escogernos? <i class="bi bi-arrow-right"></i></p>
                     </div>
-                    <div class="col mt-4">
+                    <div class="col mt-4" id="text2">
 
 
                         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -377,8 +377,8 @@
                 <div class="row px-5">
                     <div class="col">
                         <h6>Contacto</h6>
-                        <h1 class="mb-3" >Póngase en contacto con nosotros</h1>
-                        <p > ¡Conéctate con Talent Hub! Gestión integral de recursos humanos: búsqueda,
+                        <h1 class="mb-3" id="part2">Póngase en contacto con nosotros</h1>
+                        <p id="part2"> ¡Conéctate con Talent Hub! Gestión integral de recursos humanos: búsqueda,
                             contratación, pagos, beneficios, seguridad laboral, vacaciones, incentivos y manejo de
                             despidos. ¡Optimiza tu empresa con nosotros!</p>
                         <div class="contact-container py-2">
@@ -401,16 +401,16 @@
                     <div class="col align-items-center" id="forms">
                         <form class="py-5" (ngSubmit)="onSubmit()">
                             <div class="mb-3">
-                              <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Nombre*" [(ngModel)]="form_name" name="name">
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre*" [(ngModel)]="form_name" name="name">
                             </div>
                             <div class="mb-3">
-                              <input type="text" class="form-control"  placeholder="Celular*" [(ngModel)]="form_cel" name="name">
+                              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Celular*" [(ngModel)]="form_cel" name="name">
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control"  placeholder="Email*" [(ngModel)]="form_email" name="name">
+                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Email*" [(ngModel)]="form_email" name="name">
                               </div>
                             <div class="mb-3">
-                                <textarea class="form-control"  rows="3" placeholder="Ingrese su mensaje*" [(ngModel)]="form_message" name="name"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Ingrese su mensaje*" [(ngModel)]="form_message" name="name"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                           </form>

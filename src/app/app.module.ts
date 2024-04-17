@@ -13,6 +13,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import {HttpClientModule} from "@angular/common/http";
 import { MetodoPComponent } from './components/metodo-p/metodo-p.component';
 import { TarjetaVisaComponent } from './components/tarjeta-visa/tarjeta-visa.component';
+import { FPagoComponent } from './components/f-pago/f-pago.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TarjetaVisaComponent } from './components/tarjeta-visa/tarjeta-visa.com
     PaymentComponent,
     MetodoPComponent,
     TarjetaVisaComponent,
+    FPagoComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { TarjetaVisaComponent } from './components/tarjeta-visa/tarjeta-visa.com
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

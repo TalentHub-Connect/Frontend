@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/service/validation.service';
+import { Card } from 'src/app/model/Entities/card';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { RegistrarTarjetaService } from 'src/app/model/registrarTarjeta.service';
+import { PosibleUsuario } from 'src/app/model/Entities/posibleUsuario';
 
 @Component({
   selector: 'app-tarjeta-visa',
@@ -8,14 +13,27 @@ import { ValidationService } from 'src/app/service/validation.service';
 })
 export class TarjetaVisaComponent implements OnInit {
 
+  nuevaTarjeta: Card = new Card();
+  nuevaUT: PosibleUsuario = new PosibleUsuario(); 
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
+
+
   cardDetails: { [key: string]: { card: HTMLElement, input: HTMLInputElement, errorDiv: HTMLElement, validation: boolean } } = {};
   confirmBtn!: HTMLButtonElement;
   formSection!: HTMLElement;
   thanksSection!: HTMLElement;
+  errorSection!: HTMLElement;
 
-  constructor(private validationService: ValidationService) { }
+  constructor(private route: ActivatedRoute,private validationService: ValidationService, private registrarTarjeta: RegistrarTarjetaService,private router: Router) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.nombre = params['nombre'] || '';
+      this.apellido = params['apellido'] || '';
+      this.email = params['email'] || '';
+    });
     const fields = [
       { key: 'name', selector: '.card__details-name', inputId: 'cardholder', errorSelector: '.form__cardholder--error' },
       { key: 'number', selector: '.card__number', inputId: 'cardNumber', errorSelector: '.form__inputnumber--error' },
@@ -33,6 +51,7 @@ export class TarjetaVisaComponent implements OnInit {
       };
 
       if (field.key === 'name') {
+
         this.cardDetails[field.key].input.addEventListener('input', () => {
           this.cardDetails[field.key].card.innerText = this.cardDetails[field.key].input.value || 'JANE APPLESEED';
         });
@@ -64,8 +83,33 @@ export class TarjetaVisaComponent implements OnInit {
       });
 
       if (isValid) {
-        this.formSection.style.display = 'none';
-        this.thanksSection.style.display = 'block';
+        this.nuevaUT.nombre = this.nombre; // Asignar el nombre
+        this.nuevaUT.apellido = this.apellido; // Asignar el apellido
+        this.nuevaUT.email = this.email; // Asignar el email
+        this.nuevaUT.tarjeta = this.nuevaTarjeta; // Asignar los datos de la tarjeta
+        this.enviarDatos()
+      }
+    });
+  }
+  checkboxChanged(event: any) {
+    this.nuevaTarjeta.autoRenewal = event.target.checked;
+    
+    if (this.nuevaTarjeta.autoRenewal) {
+    } else {
+    }
+  }
+  
+  
+  enviarDatos(): void {
+    console.log('Datos que se envían:', this.nuevaUT);
+    this.registrarTarjeta.registrarTarjetaConPersona(this.nuevaUT).subscribe({
+      
+      next: (data) => {
+        console.log('Respuesta recibida:', data);
+        this.router.navigate(['/users']);
+      },
+      error: (err) => {
+        console.error('Error al enviar datos:', err);
       }
     });
   }

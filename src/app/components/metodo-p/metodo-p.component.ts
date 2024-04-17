@@ -1,15 +1,34 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-metodo-p',
   templateUrl: './metodo-p.component.html',
   styleUrls: ['./metodo-p.component.css']
 })
 export class MetodoPComponent {
-  constructor(private router: Router) { }
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
 
-  redirectToRoute() {
-    // Redirige a la ruta deseada cuando se hace clic en el elemento
-    this.router.navigateByUrl('/visa');
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.nombre = params['nombre'] || '';
+      this.apellido = params['apellido'] || '';
+      this.email = params['email'] || '';
+    });
+  }
+
+  psePayment() {
+    window.location.replace("https://www.pse.com.co/persona");
+  }
+
+  visaPayment() {
+    const url = '/visa?nombre=' + encodeURIComponent(this.nombre) +
+                '&apellido=' + encodeURIComponent(this.apellido) +
+                '&email=' + encodeURIComponent(this.email);
+    this.router.navigateByUrl(url);
   }
 }
