@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/shared/model/auth/user';
 
 @Component({
   selector: 'app-metodo-p',
@@ -10,6 +11,7 @@ export class MetodoPComponent {
   nombre: string = '';
   apellido: string = '';
   email: string = '';
+  user: User = new User();
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 

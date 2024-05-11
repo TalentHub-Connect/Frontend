@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { Landing1Component } from './components/landing1/landing1.component';
@@ -14,6 +14,11 @@ import {HttpClientModule} from "@angular/common/http";
 import { MetodoPComponent } from './components/metodo-p/metodo-p.component';
 import { TarjetaVisaComponent } from './components/tarjeta-visa/tarjeta-visa.component';
 import { FPagoComponent } from './components/f-pago/f-pago.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar'; // Importa MatSnackBarModule
+import { AddEmpresaComponent } from './components/add-empresa/add-empresa.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -27,12 +32,17 @@ import { FPagoComponent } from './components/f-pago/f-pago.component';
     MetodoPComponent,
     TarjetaVisaComponent,
     FPagoComponent,
+    AddEmpresaComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
   ],

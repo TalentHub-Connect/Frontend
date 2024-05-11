@@ -5,14 +5,15 @@ import { Landing1Component } from './components/landing1/landing1.component';
 import { MetodoPComponent } from './components/metodo-p/metodo-p.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { TarjetaVisaComponent } from './components/tarjeta-visa/tarjeta-visa.component';
-
+import { AddEmpresaComponent } from './components/add-empresa/add-empresa.component';
 
 const routes: Routes = [
   { path: '', component: Landing1Component },
   { path: 'planes', component: PaymentComponent },
   { path: 'metodo', component: MetodoPComponent },
   { path: 'visa', component: TarjetaVisaComponent },
-  {path: 'forms-pago', component: FPagoComponent }
+  {path: 'forms-pago', component: FPagoComponent },
+  {path: 'empresa', component: AddEmpresaComponent }
 ];
 
 @NgModule({

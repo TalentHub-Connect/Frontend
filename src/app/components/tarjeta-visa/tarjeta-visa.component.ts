@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ValidationService } from 'src/app/service/validation.service';
-import { Card } from 'src/app/model/Entities/card';
+import { ValidationService } from 'src/app/shared/model/service/validation.service';
+import { Card } from 'src/app/shared/model/entities/card';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { RegistrarTarjetaService } from 'src/app/model/registrarTarjeta.service';
-import { PosibleUsuario } from 'src/app/model/Entities/posibleUsuario';
+import { RegistrarTarjetaService } from 'src/app/shared/model/service/registrarTarjeta.service';
 
 @Component({
   selector: 'app-tarjeta-visa',
@@ -14,10 +13,6 @@ import { PosibleUsuario } from 'src/app/model/Entities/posibleUsuario';
 export class TarjetaVisaComponent implements OnInit {
 
   nuevaTarjeta: Card = new Card();
-  nuevaUT: PosibleUsuario = new PosibleUsuario(); 
-  nombre: string = '';
-  apellido: string = '';
-  email: string = '';
 
 
   cardDetails: { [key: string]: { card: HTMLElement, input: HTMLInputElement, errorDiv: HTMLElement, validation: boolean } } = {};
@@ -29,11 +24,7 @@ export class TarjetaVisaComponent implements OnInit {
   constructor(private route: ActivatedRoute,private validationService: ValidationService, private registrarTarjeta: RegistrarTarjetaService,private router: Router) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.nombre = params['nombre'] || '';
-      this.apellido = params['apellido'] || '';
-      this.email = params['email'] || '';
-    });
+    
     const fields = [
       { key: 'name', selector: '.card__details-name', inputId: 'cardholder', errorSelector: '.form__cardholder--error' },
       { key: 'number', selector: '.card__number', inputId: 'cardNumber', errorSelector: '.form__inputnumber--error' },
@@ -83,10 +74,6 @@ export class TarjetaVisaComponent implements OnInit {
       });
 
       if (isValid) {
-        this.nuevaUT.nombre = this.nombre; // Asignar el nombre
-        this.nuevaUT.apellido = this.apellido; // Asignar el apellido
-        this.nuevaUT.email = this.email; // Asignar el email
-        this.nuevaUT.tarjeta = this.nuevaTarjeta; // Asignar los datos de la tarjeta
         this.enviarDatos()
       }
     });
@@ -101,8 +88,8 @@ export class TarjetaVisaComponent implements OnInit {
   
   
   enviarDatos(): void {
-    console.log('Datos que se envían:', this.nuevaUT);
-    this.registrarTarjeta.registrarTarjetaConPersona(this.nuevaUT).subscribe({
+    console.log('Datos que se envían:', this.nuevaTarjeta);
+    this.registrarTarjeta.registrarTarjeta().subscribe({
       
       next: (data) => {
         console.log('Respuesta recibida:', data);

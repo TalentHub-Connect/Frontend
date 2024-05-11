@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>CREAR POSTULACIÓN</h1>
+        <form [formGroup]="companyform" (ngSubmit)="SaveCompany()">
+            <mat-card>
+                <mat-card-content>
+                    <mat-form-field class="mat-50">
+                        <mat-label>Nombre Empresa</mat-label>
+                        <input formControlName="nameCompany" matInput>
+                    </mat-form-field>
+                    <mat-form-field class="mat-50">
+                        <mat-label>NIT</mat-label>
+                        <input formControlName="nit" matInput>
+                    </mat-form-field>
+                    <mat-form-field class="mat-50">
+                        <mat-label>Nombre Representante Legal</mat-label>
+                        <input matInput formControlName="nameLegalRepresentative">
+                    </mat-form-field>
+                    <mat-form-field class="mat-50">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+            
+    
+                    
+                        <mat-form-field class="mat-50">
+                          <mat-label>Telephone</mat-label>
+                          <span matTextPrefix>+57 &nbsp;</span>
+                          <input type="tel" matInput placeholder="555-555-1234" formControlName="phoneCompany">
+                        </mat-form-field>
+                     
+                      <mat-form-field class="mat-50">
+                        <mat-label>Status</mat-label>
+                        <!-- <input matInput> -->
+                        <mat-select formControlName="status">
+                            <mat-option [value]="item" *ngFor="let item of estados">{{item}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="mat-50">
+                        <mat-label>Número de trabajadores</mat-label>
+                        <input matInput formControlName="numWorkers">
+                    </mat-form-field>
+    
+                    <mat-form-field class="mat-50">
+                        <mat-label>address</mat-label>
+                        <input matInput formControlName="address">
+                    </mat-form-field>
+    
+            
+                    <mat-form-field class="mat-50">
+                        <mat-label>linkDate</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="linkDate">
+                        <mat-datepicker-toggle matIconSuffix  [for]="picker"></mat-datepicker-toggle>
+                        <mat-hint>dd/MM/yyyy</mat-hint>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+    
+                    <mat-form-field class="mat-50">
+                        <mat-label>subscriptionDate</mat-label>
+                        <input matInput [matDatepicker]="pickerSubscriptionDate" formControlName="subscriptionEndDate">
+                        <mat-datepicker-toggle matIconSuffix  [for]="pickerSubscriptionDate"></mat-datepicker-toggle>
+                        <mat-hint>dd/MM/yyyy</mat-hint>
+                        <mat-datepicker #pickerSubscriptionDate></mat-datepicker>
+                    </mat-form-field>
+    
+                    
+            
+            
+                </mat-card-content>
+                <mat-card-footer>
+                <div style="margin:2%;text-align: right;">
+                    <button mat-raised-button type="submit" color="primary"><mat-icon>save</mat-icon>Save</button>
+                    <button mat-raised-button color="warn" (click)="clearform()"><mat-icon>clear</mat-icon>Clear</button>
+                </div>
+                </mat-card-footer>
+            </mat-card>
+            
+            </form>
+    </div>
+    
+</body>
+</html>

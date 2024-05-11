@@ -1,0 +1,34 @@
+
+body {
+    margin: 0!important;
+    padding: 0!important; /* Añade esto para asegurarte de eliminar cualquier relleno predeterminado */
+    background-color: #388089;
+    height: 100vh;
+}
+mat-card{
+    margin: 2%;
+    text-align: left;
+}
+h1 {
+    text-align: center;
+    font-family: "DM Sans", sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    padding-top: 30px;
+    color: #ffffff;
+}
+
+.mat-mdc-form-field {
+    width: 98%;
+    margin: 1%;
+}
+
+.mat-50{
+    width: 48%;
+    margin: 1%;
+}
+
+button{
+    margin: 2px;
+    background-color: #388089!important;
+}
